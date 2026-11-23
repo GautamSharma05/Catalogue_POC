@@ -1,0 +1,35 @@
+services:
+  api:
+    build:
+      context: .
+      dockerfile: apps/api/Dockerfile
+    ports:
+      - '3000:3000'
+    environment:
+      PORT: 3000
+      SALES_INBOX_EMAIL: ${SALES_INBOX_EMAIL:-sales@example.com}
+      CORS_ORIGIN: http://localhost:4173
+      EMAIL_LOG_PATH: /app/apps/api/tmp/sent-emails.log
+    volumes:
+      - api-tmp:/app/apps/api/tmp
+    healthcheck:
+      test: ['CMD', 'wget', '--quiet', '--tries=1', '--spider', 'http://localhost:3000/health']
+      interval: 10s
+      timeout: 3s
+      retries: 5
+      start_period: 10s
+
+  web:
+    build:
+      context: .
+      dockerfile: apps/web/Dockerfile
+      args:
+        VITE_API_BASE_URL: http://localhost:3000
+    ports:
+      - '4173:4173'
+    depends_on:
+      api:
+        condition: service_healthy
+
+volumes:
+  api-tmp:

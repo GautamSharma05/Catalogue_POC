@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+
+# Replace with the real production domain before deploying - see the
+# comment in sitemap.xml for why category/product pages aren't listed yet.
+Sitemap: https://catalogue.example.com/sitemap.xml
