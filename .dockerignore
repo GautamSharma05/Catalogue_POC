@@ -1,0 +1,14 @@
+# Ignore everything that shouldn't enter the Docker build context.
+# Smaller context = faster `docker build` start + no cache-busting
+# from files that don't affect the image.
+
+node_modules
+dist
+.git
+.gitignore
+*.md
+.env*
+.vscode
+.idea
+coverage
+tmp

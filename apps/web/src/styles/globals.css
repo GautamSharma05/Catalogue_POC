@@ -1,0 +1,133 @@
+@import 'tailwindcss';
+@import 'tw-animate-css';
+
+@custom-variant dark (&:is(.dark *));
+
+/*
+ * Tailwind v4 "@theme inline" maps our CSS variables onto Tailwind's
+ * color/radius token system, so `bg-primary`, `text-muted-foreground`,
+ * `rounded-lg`, etc. all resolve to the values below. Keeping the actual
+ * values in :root (not inside @theme) is what makes dark mode possible -
+ * .dark overrides the same variable names.
+ */
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-success: var(--success);
+  --color-success-foreground: var(--success-foreground);
+  --color-star: var(--star);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+}
+
+/*
+ * Brand palette - carried over from the pre-Tailwind theme.css design
+ * tokens (same hex values) so the migration to shadcn/ui is a structural
+ * rewrite, not a re-brand. #4f39f6 (violet) stays the primary color,
+ * #ff7a45 (orange) stays the accent, #f5a524 stays the star-rating gold.
+ */
+:root {
+  --radius: 0.75rem;
+
+  --background: #f7f7fb;
+  --foreground: #14161c;
+  --card: #ffffff;
+  --card-foreground: #14161c;
+  --popover: #ffffff;
+  --popover-foreground: #14161c;
+
+  --primary: #4f39f6;
+  --primary-foreground: #ffffff;
+
+  --secondary: #f9fafc;
+  --secondary-foreground: #14161c;
+
+  --muted: #eef0f8;
+  --muted-foreground: #8b92a3;
+
+  --accent: #efecff;
+  --accent-foreground: #4f39f6;
+
+  --destructive: #c62828;
+  --destructive-foreground: #ffffff;
+
+  --success: #17795e;
+  --success-foreground: #ffffff;
+
+  --star: #f5a524;
+
+  --border: #e6e8ef;
+  --input: #d4d8e4;
+  --ring: #4f39f6;
+}
+
+.dark {
+  --background: #0f1016;
+  --foreground: #f3f4f8;
+  --card: #181a23;
+  --card-foreground: #f3f4f8;
+  --popover: #181a23;
+  --popover-foreground: #f3f4f8;
+
+  --primary: #7b68ff;
+  --primary-foreground: #0f1016;
+
+  --secondary: #1f222c;
+  --secondary-foreground: #f3f4f8;
+
+  --muted: #1f222c;
+  --muted-foreground: #9aa0b4;
+
+  --accent: #272b3a;
+  --accent-foreground: #7b68ff;
+
+  --destructive: #ff6b6b;
+  --destructive-foreground: #0f1016;
+
+  --success: #2fd9a8;
+  --success-foreground: #0f1016;
+
+  --star: #f5c04a;
+
+  --border: #272b3a;
+  --input: #30364a;
+  --ring: #7b68ff;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+  }
+
+  h1,
+  h2,
+  h3 {
+    letter-spacing: -0.01em;
+    line-height: 1.2;
+    font-weight: 600;
+  }
+}
