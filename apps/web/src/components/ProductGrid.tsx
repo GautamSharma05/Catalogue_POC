@@ -20,12 +20,12 @@ export function ProductGrid({ products, emptyMessage = 'No products available' }
   }
 
   return (
-    <div className="grid grid-cols-2 gap-5 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
+    <div className="product-grid grid grid-cols-2 gap-5 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
       {products.map((p) => (
         <Link
           key={p.id}
           to={`/products/${p.id}`}
-          className="group flex flex-col overflow-hidden rounded-xl border bg-card shadow-sm transition-shadow hover:shadow-md"
+          className="card group flex flex-col overflow-hidden rounded-xl border bg-card shadow-sm transition-shadow hover:shadow-md"
         >
           {/* object-contain, not object-cover: a lot of these photos are
               tall/narrow (jewelry, jackets, dresses), and cover would crop
@@ -40,7 +40,7 @@ export function ProductGrid({ products, emptyMessage = 'No products available' }
           </div>
           <div className="flex flex-1 flex-col gap-1.5 p-3">
             <div className="text-xs font-medium capitalize text-primary">{p.category}</div>
-            <h3 className="line-clamp-2 flex-1 text-sm font-medium leading-snug">{p.title}</h3>
+            <h3 className="card__title line-clamp-2 flex-1 text-sm font-medium leading-snug">{p.title}</h3>
             <div className="mt-1 flex flex-col gap-1">
               <strong className="text-base font-semibold">${p.price.toFixed(2)}</strong>
               <StarRating rate={p.rating.rate} count={p.rating.count} />
