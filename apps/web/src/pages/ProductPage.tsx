@@ -71,13 +71,13 @@ export function ProductPage() {
           <h1 className="text-3xl tracking-tight">{product.title}</h1>
 
           <div className="flex items-center gap-3">
-            <div className="text-2xl font-semibold">${product.price.toFixed(2)}</div>
+            <div className="pdp__price text-2xl font-semibold">${product.price.toFixed(2)}</div>
             <StarRating rate={product.rating.rate} count={product.rating.count} />
           </div>
 
           <hr className="border-border" />
 
-          <p className="leading-relaxed text-muted-foreground">{product.description}</p>
+          <p className="pdp__desc leading-relaxed text-muted-foreground">{product.description}</p>
 
           <Dialog open={enquiryOpen} onOpenChange={setEnquiryOpen}>
             <DialogTrigger asChild>

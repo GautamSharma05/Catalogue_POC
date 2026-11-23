@@ -20,7 +20,7 @@ export function RecentlyViewed() {
   }
 
   return (
-    <section className="mt-12">
+    <section className="section mt-12">
       <div className="mb-5">
         <h2 className="text-lg font-semibold">Recently viewed</h2>
       </div>
